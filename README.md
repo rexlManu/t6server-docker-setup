@@ -2,6 +2,7 @@
 
 Here is a setup how to run t6servers and iw4admin in docker nicely
 
+Currently this repo is not recommend for production use. WIPx
 
 ## Setup
 
