@@ -1,7 +1,7 @@
 #!/bin/bash
 
 WORKING_DIR=$(pwd)
-INSTALL_DIR="$WORKING_DIR"/admin2
+INSTALL_DIR="$WORKING_DIR"/admin
 
 rm -rf $INSTALL_DIR
 mkdir -p $INSTALL_DIR

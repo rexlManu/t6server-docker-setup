@@ -3,6 +3,9 @@ FROM ubuntu:20.04
 ENV WINEPREFIX=/root/.wine
 ENV WINEDEBUG=fixme-all
 ENV WINEARCH=win64
+ENV PORT=4976
+ENV MODE=t6mp
+ENV KEY="XXXXXX"
 
 # Update the system
 RUN apt-get update
@@ -38,8 +41,8 @@ RUN apt update; \
 RUN winecfg
 
 # prepare launch
-WORKDIR /app
-COPY StartIW4MAdmin.sh .
-RUN chmod +x StartIW4MAdmin.sh
+WORKDIR /server
+COPY launch.sh .
+RUN chmod +x launch.sh
 
-CMD ["./StartIW4MAdmin.sh"]
+CMD ["./launch.sh"]
