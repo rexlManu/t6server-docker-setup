@@ -7,6 +7,7 @@ Currently this repo is not recommend for production use. WIPx
 ## Setup
 
 Requirements
+
 - docker installed
 - following packages installed: wget curl unzip
 
@@ -16,6 +17,7 @@ Run the script in `scripts/install-server.sh` in the repository main directory.
 
 After that you should see a new directory `servers`.
 There a two other directors:
+
 - `game`
 - `plutonium`
 
@@ -26,9 +28,9 @@ Copy the content of `Server` in the archive into `game` directory.
 Because plutonium is outdated in the archive, we will use the files from your client.
 Copy the contents of your plutonium folder in `%localappdata%/Plutonium` folder and put them in the `plutonium` folder on server.
 
-Now we're ready to create our first server
+Now we're ready to add our first server
 
-### 2. Create our first server
+### 2. Add our first server
 
 First copy one of the example cfgs from the `example-configs` directory.
 
@@ -36,6 +38,7 @@ First copy one of the example cfgs from the `example-configs` directory.
 - t6zm is Zombie
 
 In the cfg file it is important to set a rcon password for later and change following option:
+
 ```
 g_log "logs\YOURSERVERNAME_games_mp.log"
 ```
@@ -71,6 +74,7 @@ replace `ManualLogPath` path like so
 ```
 
 After that save and run:
+
 ```bash
 docker start t6server_iw6admin
 ```
