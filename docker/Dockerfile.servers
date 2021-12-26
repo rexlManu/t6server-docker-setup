@@ -1,5 +1,7 @@
 FROM ubuntu:20.04
 
+MAINTAINER "Emmanuel Lampe"
+
 ENV WINEPREFIX=/root/.wine
 ENV WINEDEBUG=fixme-all
 ENV WINEARCH=win64
@@ -14,33 +16,18 @@ RUN apt-get update
 RUN apt-get install -y wget zip gnupg2 software-properties-common xvfb
 
 # Installing wine
-RUN dpkg --add-architecture i386 
-RUN wget -nc https://dl.winehq.org/wine-builds/winehq.key
-RUN apt-key add winehq.key
-RUN add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
-RUN apt update
-RUN apt install -y --install-recommends winehq-stable
-RUN rm winehq.key
-
-# Installing dotnet
-RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-RUN dpkg -i packages-microsoft-prod.deb
-RUN rm packages-microsoft-prod.deb
-
-RUN apt update; \
-  apt install -y apt-transport-https && \
+RUN dpkg --add-architecture i386 &&  && \
+  wget -nc https://dl.winehq.org/wine-builds/winehq.key && \
+  apt-key add winehq.key && \
+  add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' && \
   apt update && \
-  apt install -y dotnet-sdk-3.1
+  apt install -y --install-recommends winehq-stable && \
+  rm winehq.key
 
-RUN apt update; \
-  apt install -y apt-transport-https && \
-  apt update && \
-  apt install -y aspnetcore-runtime-3.1
-
-# setup wine
+# Setup wine
 RUN winecfg
 
-# prepare launch
+# Prepare launch
 WORKDIR /server
 COPY launch.sh .
 RUN chmod +x launch.sh
